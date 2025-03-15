@@ -219,7 +219,7 @@
 
 /* Online indicator and user status */
 .user-status {
-    color: var(--bs-light);
+    color: white;
     display: flex;
     align-items: center;
     gap: 8px;
