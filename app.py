@@ -7,8 +7,8 @@ from pathlib import Path
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
-app = Flask(__name__)
-app.secret_key = os.environ.get("SESSION_SECRET")
+app = Flask(__name__, static_folder='static')
+app.secret_key = os.environ.get("SESSION_SECRET", "your-secret-key-here")
 
 # Create uploads directory if it doesn't exist
 UPLOAD_FOLDER = Path('./uploads')
