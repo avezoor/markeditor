@@ -59,7 +59,16 @@
 </head>
 <body>
     <div class="container py-4">
-        <h1 class="mb-4">Markdown Editor</h1>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Markdown Editor</h1>
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-dark user-status" disabled>
+                    <span class="online-dot"></span>
+                    <span id="random-username">User</span>
+                </button>
+                <span class="author-info">Created by Avezoor</span>
+            </div>
+        </div>
 
         <div class="btn-toolbar mb-3">
             <button class="btn btn-secondary me-2" onclick="loadFile()">

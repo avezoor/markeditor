@@ -339,6 +339,17 @@ function loadFile() {
 }
 
 // Initialize editor when DOM is fully loaded
+function generateRandomUsername() {
+    const adjectives = ['Happy', 'Smart', 'Quick', 'Clever', 'Bright', 'Swift'];
+    const nouns = ['Writer', 'Editor', 'Coder', 'Author', 'Ninja', 'Star'];
+    const randomNum = Math.floor(Math.random() * 1000);
+    const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const noun = nouns[Math.floor(Math.random() * nouns.length)];
+    return `${adj}${noun}${randomNum}`;
+}
+
+// Initialize editor when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeEditor();
+    document.getElementById('random-username').textContent = generateRandomUsername();
 });
