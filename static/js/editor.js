@@ -52,7 +52,19 @@ function initializeEditor() {
             },
             toolbar: [
                 'bold', 'italic', 'heading', '|',
-                'quote', 'unordered-list', 'ordered-list', '|',
+                'quote', 'unordered-list', 'ordered-list', 
+                {
+                    name: "latex",
+                    action: function(editor) {
+                        const cm = editor.codemirror;
+                        const selection = cm.getSelection();
+                        const text = selection || '  ';
+                        cm.replaceSelection(`$$${text}$$`);
+                    },
+                    className: "fa fa-square-root-alt",
+                    title: "Insert LaTeX Math",
+                },
+                '|',
                 {
                     name: "custom-table",
                     action: insertCustomTable,
