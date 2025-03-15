@@ -19,6 +19,43 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- MathJax Configuration -->
+    {% raw %}
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            processRefs: true,
+            digits: /^(?:[0-9]+(?:\{,\}[0-9]{3})*(?:\.[0-9]*)?|\.[0-9]+)/,
+            tags: 'ams',
+            packages: {'[+]': ['noerrors', 'mhchem']},
+            macros: {
+                bm: ["\\boldsymbol{#1}", 1],
+                vv: ["\\vec{\\boldsymbol{#1}}", 1]
+            }
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            ignoreHtmlClass: 'tex2jax_ignore',
+            processHtmlClass: 'tex2jax_process'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady().then(() => {
+                    console.log('MathJax initial typesetting completed');
+                });
+            }
+        }
+    };
+    </script>
+    {% endraw %}
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
 </head>
 <body>
     <div class="container py-4">
@@ -74,10 +111,6 @@
 
     <!-- Marked for Markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
-
-    <!-- MathJax -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <!-- Custom JS -->
     <script src="{{ url_for('static', filename='js/editor.js') }}"></script>
